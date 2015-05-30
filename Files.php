@@ -1,11 +1,11 @@
 <?php
-namespace Files;
 /**
  * Created by IntelliJ IDEA.
  * User: leonardoalbuquerque
  * Date: 27/05/15
  * Time: 12:13
  */
+
 
 /**
  * Esta classe
@@ -16,7 +16,7 @@ class Files {
 
    private $inputFile;
 
-    public function __constructor(){
+    public function __construct(){
 
         $this->inputFile = "input.json";
 
@@ -31,7 +31,7 @@ class Files {
 
         $data = file_get_contents($this->inputFile);
 
-        return json_encode($data,true);
+        return json_decode($data,true);
 
     }
 

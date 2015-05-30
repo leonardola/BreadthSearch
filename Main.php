@@ -1,5 +1,6 @@
 <?php
-use Files\Files;
+
+
 /**
  * Created by IntelliJ IDEA.
  * User: leonardoalbuquerque
@@ -7,18 +8,21 @@ use Files\Files;
  * Time: 12:44
  */
 
-//$files = new Files();
+require_once("Files.php");
+require_once("Graph.php");
 
 
-$data = array(
-    "a"=>array(
-        "a"=>0,
-        "b"=>1
-    ),
-    "b"=>array(
-        "a"=>0,
-        "b"=>0
-    )
-);
+$files = new Files();
 
-echo json_encode($data,true);
+$graph = $files->getData();
+
+echo "qual nó começar? ";
+
+$firstElement = readline();
+
+echo $firstElement;
+
+
+$graphObj = new Graph();
+
+$graphObj->doSearch($firstElement,$graph);
