@@ -8,37 +8,59 @@
 
 class Graph {
 
+    private $buffer = [];
+    private $output = [];
+
     /**
      * @param $needle
      * @param $matrix
      */
     public function doSearch($needle,$matrix){
 
-        $buffer = [$needle];
+        $this->addNeedleAsFirstElement($needle);
 
-        $output = [$needle];
+        while(!$this->isBufferEmpty()){
 
-        while(sizeof($buffer) > 0){
+            foreach($matrix[$this->buffer[0]] as $node => $nodeIsConnected){
 
-            foreach($matrix[$buffer[0]] as $key => $column){
-
-                if($column){
-
-                    if(!in_array($key,$buffer) && !in_array($key,$output)){
-
-                        $buffer[] = $key;
-                        $output[] = $key;
-
-                    }
+                if($nodeIsConnected && !$this->nodeWasVisited($node)){
+                    $this->addNode($node);
                 }
             }
 
-            array_shift($buffer);
+            $this->removeActualElementFromBuffer();
 
         }
 
-        print_r($output);
+        $this->removeNeedleFromOutput();
+
+        print_r($this->output);
 
     }
 
+    private function addNeedleAsFirstElement($needle){
+        $this->buffer = [$needle];
+        $this->output = [$needle];
+    }
+
+    private function isBufferEmpty(){
+        return sizeof($this->buffer) == 0 ;
+    }
+
+    private function nodeWasVisited($node){
+        return in_array($node,$this->buffer) || in_array($node,$this->output);
+    }
+
+    private function addNode($node){
+        $this->buffer[] = $node;
+        $this->output[] = $node;
+    }
+
+    private function removeActualElementFromBuffer(){
+        array_shift($this->buffer);
+    }
+
+    private function removeNeedleFromOutput(){
+        array_shift($this->output);
+    }
 }
