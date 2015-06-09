@@ -6,7 +6,7 @@
  * Time: 09:41
  */
 
-class Graph {
+class BreadthSearch {
 
     private $buffer = [];
     private $output = [];
@@ -15,7 +15,7 @@ class Graph {
      * @param $needle
      * @param $matrix
      */
-    public function doSearch($needle,$matrix){
+    public function doBreathSearch($needle,$matrix){
 
         $this->addNeedleAsFirstElement($needle);
 
@@ -34,9 +34,10 @@ class Graph {
 
         $this->removeNeedleFromOutput();
 
-        print_r($this->output);
+        $this->showOutput();
 
     }
+
 
     private function addNeedleAsFirstElement($needle){
         $this->buffer = [$needle];
@@ -62,5 +63,11 @@ class Graph {
 
     private function removeNeedleFromOutput(){
         array_shift($this->output);
+    }
+
+    private function showOutput(){
+
+        print_r($this->output);
+
     }
 }

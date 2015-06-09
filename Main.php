@@ -9,7 +9,7 @@
  */
 
 require_once("Files.php");
-require_once("Graph.php");
+require_once("BreathSearch.php");
 
 
 $files = new Files();
@@ -20,9 +20,9 @@ echo "qual nó começar? ";
 
 $firstElement = readline();
 
-echo $firstElement;
+echo $firstElement . "\n";
 
 
-$graphObj = new Graph();
+$graphObj = new BreadthSearch();
 
 $graphObj->doSearch($firstElement,$graph);

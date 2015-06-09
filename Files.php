@@ -22,7 +22,6 @@ class Files {
 
     }
 
-
     /**
      * pega os dados do arquivo
      * @return string
