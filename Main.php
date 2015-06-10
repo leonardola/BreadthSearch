@@ -9,7 +9,7 @@
  */
 
 require_once("Files.php");
-require_once("BreathSearch.php");
+require_once("BreadthSearch.php");
 
 
 $files = new Files();
@@ -23,6 +23,10 @@ $firstElement = readline();
 echo $firstElement . "\n";
 
 
-$graphObj = new BreadthSearch();
+$graphObj = new BreadthSearch($graph);
 
-$graphObj->doSearch($firstElement,$graph);
+foreach($graph as $key => $element){
+    echo "com ".$key."\n";
+    $graphObj->doBreathSearch($key);
+}
+

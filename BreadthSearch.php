@@ -10,18 +10,25 @@ class BreadthSearch {
 
     private $buffer = [];
     private $output = [];
+    private $matrix = [];
+    private $needle;
+
+    public function __construct($matrix){
+        $this->matrix = $matrix;
+    }
 
     /**
      * @param $needle
      * @param $matrix
      */
-    public function doBreathSearch($needle,$matrix){
+    public function doBreathSearch($needle){
+        $this->needle = $needle;
 
-        $this->addNeedleAsFirstElement($needle);
+        $this->addNeedleAsFirstElement();
 
         while(!$this->isBufferEmpty()){
 
-            foreach($matrix[$this->buffer[0]] as $node => $nodeIsConnected){
+            foreach($this->matrix[$this->buffer[0]] as $node => $nodeIsConnected){
 
                 if($nodeIsConnected && !$this->nodeWasVisited($node)){
                     $this->addNode($node);
@@ -32,16 +39,16 @@ class BreadthSearch {
 
         }
 
-        $this->removeNeedleFromOutput();
+        $this->removeNeedleFromOutputIfNeeded();
 
         $this->showOutput();
 
     }
 
 
-    private function addNeedleAsFirstElement($needle){
-        $this->buffer = [$needle];
-        $this->output = [$needle];
+    private function addNeedleAsFirstElement(){
+        $this->buffer = [$this->needle];
+        $this->output = [$this->needle];
     }
 
     private function isBufferEmpty(){
@@ -61,13 +68,17 @@ class BreadthSearch {
         array_shift($this->buffer);
     }
 
-    private function removeNeedleFromOutput(){
-        array_shift($this->output);
+    private function removeNeedleFromOutputIfNeeded(){
+        if($this->isNeedledLoopback()){
+            array_shift($this->output);
+        }
+    }
+
+    private function isNeedledLoopback(){
+        return !$this->matrix[$this->needle][$this->needle];
     }
 
     private function showOutput(){
-
         print_r($this->output);
-
     }
 }
