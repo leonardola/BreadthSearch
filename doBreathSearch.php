@@ -1,32 +1,27 @@
 <?php
-
-
 /**
  * Created by IntelliJ IDEA.
  * User: leonardoalbuquerque
- * Date: 27/05/15
- * Time: 12:44
+ * Date: 09/06/15
+ * Time: 22:21
  */
 
 require_once("Files.php");
 require_once("BreadthSearch.php");
 
+header('Content-Type: application/json');
 
 $files = new Files();
 
 $graph = $files->getData();
 
-echo "qual nó começar? ";
-
-//$firstElement = readline();
-
-//echo $firstElement . "\n";
-
-
 $graphObj = new BreadthSearch($graph);
+$output = [];
 
 foreach($graph as $firstElement => $element){
-    echo "com ".$firstElement."\n";
-    $graphObj->doBreathSearch($firstElement);
+    $output[] = $graphObj->doBreathSearch($firstElement);
 }
+
+echo json_encode($output,JSON_FORCE_OBJECT);
+
 

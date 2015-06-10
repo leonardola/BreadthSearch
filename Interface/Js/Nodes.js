@@ -5,7 +5,7 @@
 
 var Node = (function(pub){
 
-    var lastId = 0;
+    var lastId = -1;
 
     pub.addNewNode = function () {
         lastId++;

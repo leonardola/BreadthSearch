@@ -80,16 +80,18 @@ var Relationship = (function(pub){
         selectedElements = [];
     };
 
-    pub.getRelationship = function(){
+    pub.getRelationshipTable = function(){
 
-        for(var line in relationShipTable){
+        return relationShipTable;
+
+        /*for(var line in relationShipTable){
             var lineData = line+"-";
 
             for(var column in relationShipTable[line]){
                 lineData += relationShipTable[line][column]+"|";
             }
             console.log(lineData+"\n");
-        }
+        }*/
 
     }
 

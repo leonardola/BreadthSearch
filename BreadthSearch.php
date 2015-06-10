@@ -34,15 +34,12 @@ class BreadthSearch {
                     $this->addNode($node);
                 }
             }
-
             $this->removeActualElementFromBuffer();
-
         }
 
-        $this->removeNeedleFromOutputIfNeeded();
-
-        $this->showOutput();
-
+        $this->removeNonLoopBackNeedle();
+        return $this->output;
+        //$this->showOutput();
     }
 
 
@@ -68,7 +65,7 @@ class BreadthSearch {
         array_shift($this->buffer);
     }
 
-    private function removeNeedleFromOutputIfNeeded(){
+    private function removeNonLoopBackNeedle(){
         if($this->isNeedledLoopback()){
             array_shift($this->output);
         }
