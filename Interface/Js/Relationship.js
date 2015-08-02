@@ -55,11 +55,8 @@ var Relationship = (function(pub){
     }
 
     pub.addNode = function(nodeId){
-
         createNewLine(nodeId);
-
         createNewColumn(nodeId);
-
     };
 
     function createNewLine(nodeId){
@@ -81,19 +78,8 @@ var Relationship = (function(pub){
     };
 
     pub.getRelationshipTable = function(){
-
         return relationShipTable;
-
-        /*for(var line in relationShipTable){
-            var lineData = line+"-";
-
-            for(var column in relationShipTable[line]){
-                lineData += relationShipTable[line][column]+"|";
-            }
-            console.log(lineData+"\n");
-        }*/
-
-    }
+    };
 
     return pub;
 

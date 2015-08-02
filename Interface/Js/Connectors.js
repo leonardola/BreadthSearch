@@ -16,7 +16,8 @@ var Connectors = (function(pub){
             connector:["Straight"],
             endpoint:[ "Dot", {
                 radius:2
-            }]
+            }],
+            anchor:[ "Perimeter", { shape:"Circle" } ]
         });
     };
 
