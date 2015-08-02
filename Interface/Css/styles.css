@@ -8,10 +8,14 @@
 
 .node{
 
-    height: 50px;
-    width: 50px;
     background: dodgerblue;
     position: absolute;
+    display: block;
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+    margin: 0;
+    text-align: center;
 
 }
 

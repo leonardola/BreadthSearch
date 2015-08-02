@@ -37,7 +37,6 @@ class BreadthSearch {
             $this->removeActualElementFromBuffer();
         }
 
-        $this->removeNonLoopBackNeedle();
         return $this->output;
         //$this->showOutput();
     }
@@ -63,16 +62,6 @@ class BreadthSearch {
 
     private function removeActualElementFromBuffer(){
         array_shift($this->buffer);
-    }
-
-    private function removeNonLoopBackNeedle(){
-        if($this->isNeedledLoopback()){
-            array_shift($this->output);
-        }
-    }
-
-    private function isNeedledLoopback(){
-        return !$this->matrix[$this->needle][$this->needle];
     }
 
     private function showOutput(){
