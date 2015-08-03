@@ -23,7 +23,6 @@ class BreadthSearch {
      */
     public function doBreathSearch($needle){
         $this->needle = $needle;
-
         $this->addNeedleAsFirstElement();
 
         while(!$this->isBufferEmpty()){

@@ -8,6 +8,8 @@ var Relationship = (function(pub){
     var selectedElements = [];
 
     pub.selectElement = function (element) {
+        element.addClass("selectedNode");
+
         if(selectedElements.length == 0){
             selectFirstElement(element);
         }else{
@@ -17,7 +19,6 @@ var Relationship = (function(pub){
 
     function selectFirstElement(element){
         selectedElements.push(element.attr("node-id"));
-        element.addClass("selectedNode");
     }
 
     function createRelationShip(element){

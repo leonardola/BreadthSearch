@@ -16,6 +16,7 @@ $(document).ready(function () {
 
     $(document).click(function () {
         Relationship.clearSelectedElements();
+        $(".node").removeClass("selectedNode");
     });
 
     $(".saveData").click(function () {
@@ -23,7 +24,9 @@ $(document).ready(function () {
     });
 
     $(".doBreathSearch").click(function () {
-        Database.doSearch();
+        var result = BreadthSearch.execute(Relationship.getRelationshipTable(), 0);
+
+        Output.showBreathSearch(result);
     })
 
 });
